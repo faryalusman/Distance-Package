@@ -12,7 +12,7 @@ You can install the package through github via the following code:
 ``` r
 install.packages("devtools")
 library("devtools")
-github_install("faryalusman/Distance-Package")
+install_github("faryalusman/Distance-Package")
 ```
 
 ## Licenses
