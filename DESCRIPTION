@@ -1,0 +1,22 @@
+Package: CompendiumPackage
+Type: Package
+Title: Calculating Different Distance Types
+Version: 0.1.0
+Authors@R: 
+    person(given = "Faryal",
+           family = "Usman",
+           role = c("aut", "cre"),
+           email = "fusman@uw.edu", 
+           comment = c(ORCID = 0000-0001-8135-5919))
+Maintainer: Faryal Usman <fusman@uw.edu>
+Description: 
+        Provides simple functionality to compute the euclidean or manhattan distances between two 
+        points in a cartesian plane. 
+Depends: R (>= 3.2.0)
+Imports: ggplot2, carData, devtools, desc
+Suggests: knitr, rmarkdown, dplyr
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.2
+VignetteBuilder: knitr
