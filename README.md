@@ -45,5 +45,5 @@ euclidean_dist(x_1 = A[1], x_2 = B[1], y_1 = A[2], y_2 = B[2])
 Refer to the vignettes for even more examples.
 
 ## Code of Conduct
-Please make ethical use of this package. More information is to be found in the [Code of Conduct](CODE-OF-CONDUCT.md)
+Please make ethical use of this package. More information is to be found in the [Code of Conduct](CODE_OF_CONDUCT.md)
 
