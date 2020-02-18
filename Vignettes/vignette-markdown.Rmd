@@ -1,0 +1,120 @@
+---
+title: "My Report as Vignette.rmd"
+output:
+  #rmarkdown::html_vignette: default
+    bookdown::html_document2:
+      base_format: rmarkdown::html_vignette
+      number_sections: no
+      fig_caption: yes
+bibliography: my-bib.bib
+vignette: > 
+  %\VignetteIndexEntry{my-report-as-vignette} 
+  %\VignetteEngine{knitr::rmarkdown}  
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+      message = FALSE, 
+      warning = FALSE, 
+      fig.width = 8)
+```
+
+```{r, include = FALSE}
+#library(carData)
+#library(ggplot2)
+```
+
+
+```{r}
+library(CompendiumPackage)
+```
+
+Loading the required files to get coordinates randomly from a dataset. 
+```{r}
+source('coordinate-extractor-function.R')
+knitr::read_chunk('coordinate-extractor-function.R')
+```
+
+## Uses of the Manhattan and the Euclidean Distances 
+There are lots of interesting uses of the Manhattan vs. the Euclidean Distances. 
+@singh2013k document the use of these different distances in differing k-means clustering approaches. 
+@malkauthekar2013analysis mention their interesting uses in different facial recognition methods. These approaches differ only slightly yet offer a lot of insight into many algorithms in use today. 
+
+A plot showing Euclidean distance between two points is shown in \@ref(fig:Euclidean)
+
+## Demonstrating how to calculate the Euclidean distance between two points
+The Euclidean distance is used in traditional mathematics to calculate the distance of two points. 
+
+It involves calculating: 
+
+    * The difference squared of the x coordinates of two points
+    * The difference squared of the y coordinates of two points
+    * Sum of the differences squared
+    * Square root of the sum.
+
+For example, the points (1,4) and (4,8) should evaluate to:
+
+    * (4 - 1)^2 = 9 
+    * (8 - 4)^2 = 16
+    * 9 + 16 = 25
+    * Euclidean Distance = square-root(25) = 5
+
+Let us verify this with our function.
+```{r}
+euclidean_dist(x_1 = 1, x_2 = 4, y_1 = 4, y_2 = 8)
+```
+It works!
+
+## Calculating the Manhattan Distance between the same two points.
+The Manhattan distance is an untraditional distance measure. It can be thought off as taking the 'long way around' instead of following the hypotenuse like the Euclidean distance does. 
+
+It involves calculating:
+
+    * The absolute difference of the x coordinates of two points.
+    * The absolute difference of the y coordinates of two points 
+    * Sum of the absolute differences
+
+For the sample example, the Manhattan Distance should evaluate to:
+
+    * | 4 - 1 | = 3
+    * | 8 - 4 | = 4
+    * Manhattan Distance = 3 + 4  = 7 
+
+Let us verify this with our function.
+```{r}
+manhattan_dist(x_1 = 1, x_2 = 4, y_1 = 4, y_2 = 8)
+```
+It works!
+
+## Calculating the Manhattan and Euclidean Distances from random points
+### Getting first random coordinate 
+```{r}
+# Generating one coordinate and extracting its x and y value 
+set.seed(123)
+coordinate_1 = get_coordinate_from_Burt()
+coordinate_1
+```
+### Getting second random coordinate 
+```{r}
+set.seed(5)
+coordinate_2 = get_coordinate_from_Burt()
+coordinate_2
+```
+### Getting their Euclidean Distance 
+```{r}
+euclidean_dist(x_1 = coordinate_1[1], x_2 = coordinate_2[1], y_1 = coordinate_1[2], y_2 = coordinate_2[2])
+```
+### Getting their Manhattan Distance
+Because the Manhattan distance is longer (i.e. the sum of two sides of a triangle rather than its hypotenuse), as a sanity check we expect it to be larger than 69. 
+```{r}
+manhattan_dist(x_1 = coordinate_1[1], x_2 = coordinate_2[1], y_1 = coordinate_1[2], y_2 = coordinate_2[2])
+```
+And we guessed right!
+
+## Plotting the Euclidean Distance of the same coordinates as a straight line
+```{r Euclidean, fig.cap = "\\label{fig:Euclidean}plotting example"}
+plot_euclidean_dist(x_1 = coordinate_1[1], x_2 = coordinate_2[1], y_1 = coordinate_1[2], y_2 = coordinate_2[2])
+```
+
+
